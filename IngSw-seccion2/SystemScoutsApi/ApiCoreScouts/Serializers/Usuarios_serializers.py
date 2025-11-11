@@ -8,7 +8,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     @staticmethod
     def _build_perfil_payload(perfil):
-        """Arma los datos de perfil y permisos.
+        """
+        Arma los datos de perfil y permisos.
 
         No es estrictamente necesario usar un helper, pero mantener la
         construcción en un solo lugar evita duplicar lógica entre
@@ -85,9 +86,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         })
         return data
 
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
+
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -95,15 +98,18 @@ class UsuarioSerializer(serializers.ModelSerializer):
         fields = ['USU_ID', 'PEL_ID', 'USU_USERNAME', 'USU_RUTA_FOTO', 'USU_VIGENTE']
         read_only_fields = ('USU_ID',)
 
+
 class AplicacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aplicacion
         fields = '__all__'
-               
+
+
 class PerfilSerializer(serializers.ModelSerializer):
     class Meta:
         model = Perfil
         fields = '__all__'
+
 
 class PerfilAplicacionSerializer(serializers.ModelSerializer):
     class Meta:
