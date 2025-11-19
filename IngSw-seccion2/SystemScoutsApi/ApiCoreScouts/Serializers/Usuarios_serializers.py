@@ -77,21 +77,25 @@ class LoginSerializer(serializers.Serializer):
     USU_USERNAME = serializers.CharField(min_length=3, max_length=150)
     password = serializers.CharField(write_only=True, min_length=3)
 
+
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = ['USU_ID', 'PEL_ID', 'USU_USERNAME', 'USU_RUTA_FOTO', 'USU_VIGENTE']
         read_only_fields = ('USU_ID', 'PEL_ID')
 
+
 class AplicacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aplicacion
         fields = '__all__'
-               
+
+
 class PerfilSerializer(serializers.ModelSerializer):
     class Meta:
         model = Perfil
         fields = '__all__'
+
 
 class PerfilAplicacionSerializer(serializers.ModelSerializer):
     class Meta:
